@@ -1,0 +1,8 @@
+﻿  main.c
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(37,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(39,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,17): warning C4101: 'end': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,10): warning C4101: 'start': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(67,9): warning C4101: 'time_taken': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(52,6): warning C4101: 'j': unreferenced local variable
+  MP2_AGBUYA_KEN.vcxproj -> C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\x64\Debug\MP2_AGBUYA_KEN.exe

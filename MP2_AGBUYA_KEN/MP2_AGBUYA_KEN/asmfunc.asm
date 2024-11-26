@@ -1,4 +1,6 @@
-; assmebly with x86-65
+; G11 Member: Paul Josef P. Agbuya  S12
+; G11 Member: Ken Ivan T. Cheng
+
 
 ; 32-bit ints parameters automatically placed 1st, 2nd param, etc.: ecx, edx, r8d
 ; Floating points- single or double parameters:  xmm0, xmm1, xmm2, etc.
