@@ -8,14 +8,14 @@
 extern void imgCvtGrayFloatToInt();
 
 
-void display(float** arr, unsigned long long int w, unsigned long long int h) {
+void display(float* arr, unsigned long long int w, unsigned long long int h) {
 	int i;
 	int j;
 	for (i = 0; i < h; i++)
 	{
 		for (j = 0; j < w; j++)
 		{
-			printf("%.2f ",  arr[i][j]);
+			printf("%.2f ",  arr[i*w + j]);
 		}
 		printf("\n");
 			
@@ -23,7 +23,29 @@ void display(float** arr, unsigned long long int w, unsigned long long int h) {
 
 }
 
-void randInputs(float** arr, unsigned long long int w, unsigned long long int h) {
+void displayInt(int* arr, unsigned long long int w, unsigned long long int h) {
+	int i;
+	int j;
+	for (i = 0; i < h; i++)
+	{
+		for (j = 0; j < w; j++)
+		{
+			if (j == w - 1) {
+				printf("%d", arr[i * w + j]);
+			}
+			else {
+				printf("%d, ", arr[i * w + j]);
+			}
+			
+
+		}
+		printf("\n");
+
+	}
+
+}
+
+void randInputs(float* arr, unsigned long long int w, unsigned long long int h) {
 	int i;
 	int j;
 	
@@ -39,7 +61,7 @@ void randInputs(float** arr, unsigned long long int w, unsigned long long int h)
 			x = ((int)rand() / (float)(RAND_MAX)) * 100; // Max amount from 0.00 to 1.00
 
 			z = x*0.01;
-			arr[i][j] = z;
+			arr[i*w + j] = z;
 		}
 	}
 
@@ -53,30 +75,29 @@ int main() {
 	int i;
 	int j;
 	srand((unsigned int)time(NULL));
-
 	scanf_s("%lld %lld", &height, &width);
-
-
-
-
 
 	unsigned long long int ARRAY_SIZE = height*width;
 	unsigned long long int ARRAY_BYTES = ARRAY_SIZE * sizeof(float);
-	unsigned long long int ARRAY_BYTES_ALL = ARRAY_SIZE * sizeof(float*);
+	
 
 	
 	clock_t start, end; 
 	double time_taken;
 	
-	float** x = malloc(ARRAY_BYTES_ALL);
+	float* x = malloc(ARRAY_BYTES);
+	int* cvtX = malloc(ARRAY_BYTES);
+
+
 	for (i = 0; i < height; i++)
-		x[i] = malloc(ARRAY_BYTES);
-	
+		for (j = 0; j < width; j++)
+			cvtX[i*width + j] = 0;
 
 
 	
 	randInputs(x, width, height);
-	display(x, width, height);
-	imgCvtGrayFloatToInt();
+	imgCvtGrayFloatToInt(height, width, x, cvtX);
+	displayInt(cvtX, width, height);
+
 	return 0;
 }
