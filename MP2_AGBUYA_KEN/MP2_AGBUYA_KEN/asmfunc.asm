@@ -21,24 +21,46 @@ extern printf
 
 imgCvtGrayFloatToInt:
 
-    imul rcx, rdx
-    imul rcx, 4
-    mov r10, 0
+	mov r10, rdx
 	movss xmm1, [const255]
-
+	
 L1:
+	
+	mov rdx, r10
+	
+	L2:
+
+	; Get pointer information from matrix, using rdx as basis
 	mov rax, [r8]
-	mov dword[z], eax
+	imul r11, rdx, 4
+	add rax, r11
+	sub rax, 4 ; Decrement to account 0 based index
+
+	mov r11, [rax]
+	mov dword[z], r11d
 	movss xmm0, [z]
 	vmulss xmm2, xmm1, xmm0
-	cvtss2si ebx, xmm2
-	mov dword[r9], ebx
+	cvtss2si r11d, xmm2
 
-    add r8, 4
-    add r9, 4
-    sub rcx, 4
+	; Get pointer information from matrix, using rdx as basis
+	mov rax, [r9] ; Pointer of row
+	add rax, rdx
+	dec rax       ; Decrement to account 0 based index
+	mov byte[rax], r11b ; Pointer of specific column
+
+
+	
+	;Counter for how many in each row
+	dec rdx
+	jnz L2
+
+	; Loop to next row to fill with answers
+	add r9, 8
+    add r8, 8
+    
+    dec rcx
     jnz L1
-    ret
 
+    ret
 
 
