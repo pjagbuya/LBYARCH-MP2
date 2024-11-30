@@ -1,8 +1,16 @@
 ﻿  main.c
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(37,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(39,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,17): warning C4101: 'end': unreferenced local variable
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,10): warning C4101: 'start': unreferenced local variable
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(67,9): warning C4101: 'time_taken': unreferenced local variable
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(52,6): warning C4101: 'j': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(60,34): warning C4474: 'printf' : too many arguments passed for format string
+      C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(60,34):
+      placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+  
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(61,3): warning C4098: 'scanInputs': 'void' function returning a value
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(67,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(49,6): warning C4101: 'j': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(48,6): warning C4101: 'i': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(50,8): warning C4101: 'num': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(53,7): warning C4101: 'trsh': unreferenced local variable
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(89,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(92,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(104,8): warning C4101: 'fp': unreferenced local variable
   MP2_AGBUYA_KEN.vcxproj -> C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\x64\Debug\MP2_AGBUYA_KEN.exe
