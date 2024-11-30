@@ -44,6 +44,34 @@ void displayInt(unsigned char** arr, unsigned long long int w, unsigned long lon
 	}
 
 }
+void scanInputs(float** arr) {
+	int i;
+	int j;
+	float num;
+	unsigned int w;
+	unsigned int h;
+	char trsh;
+	FILE* fp;
+
+	errno_t err = fopen_s(&fp, "input1.txt", "r"); // Add the file pointer argument
+
+
+	if (err != 0) {
+		printf("Error opening file\n", err);
+		return 1;
+	}
+	fscanf_s(fp, "%d", &h);
+	fscanf_s(fp, "%d", &w);
+
+	for (int i = 0; i < h; i++) {
+		for (int j = 0; j < w; j++) {
+			fscanf_s(fp, "%f", &arr[i][j]);
+
+		}
+	}
+
+	fclose(fp);
+}
 
 void randInputs(float** arr, unsigned long long int w, unsigned long long int h) {
 	int i;
@@ -58,9 +86,10 @@ void randInputs(float** arr, unsigned long long int w, unsigned long long int h)
 
 		{
 
-			x = ((int)rand() / (float)(RAND_MAX)) * 100.0f; // Max amount from 0.00 to 1.00
+			x = ((int)rand() / (float)(RAND_MAX)) * 100.0f; 
 
-			z = x * 0.01f;
+			z = x * 0.01f;								// Max amount from 0.000000 to 1.000000		
+			z = ((int)(z * 100 + .5) / 100.0);			// Truncate the result
 			arr[i][j] = z;
 		}
 	}
@@ -72,11 +101,13 @@ void randInputs(float** arr, unsigned long long int w, unsigned long long int h)
 int main() {
 	unsigned long long int height;
 	unsigned long long int width;
+	FILE* fp;
 	int i;
 	int j;
 
 	srand((unsigned int)time(NULL));
 	scanf_s("%lld %lld", &height, &width);
+	double sum;
 
 	unsigned long long int ARRAY_SIZE = height * width;
 	unsigned long long int ROW_BYTES = height * sizeof(float*);
@@ -104,14 +135,29 @@ int main() {
 			cvtX[i][j] = 0;
 		}
 	}
-		
-			
+
+	sum = 0;
+	randInputs(x, width, height);
+	//scanInputs(x);
+
+
+	for (i = 0; i < 30; i++) {
+		start = clock();
+		imgCvtGrayFloatToInt(height, width, x, cvtX);
+		end = clock();
+		time_taken = ((double)(end - start)*1000.0 / CLOCKS_PER_SEC);
+		printf("Time in c, ms = %f \n", time_taken);
+		sum += time_taken;
+	}
+
+	printf("Time average c, ms = %f \n", (sum/30.0));
+
 
 
 
 	
-	randInputs(x, width, height);
-	imgCvtGrayFloatToInt(height, width, x, cvtX);
+	
+	
 	display(x, width, height);
 	printf("Converted Grayscale: \n");
 	displayInt(cvtX, width, height);
