@@ -2,7 +2,9 @@
 
 Running the program:
 1.) input1.txt
+
 2.) Y
+
 
 For the following tests, the following becnhmark results are produced with the corresponding execution times. Each run has a different randomized input within that dimension over. It will repeat further 30 times for the average execution time. 
 Enter matrix dimensions: 10x10, 100x100, and 1000x1000. Each program has been run 30 times with the same corresponding randomized inputs. Three sample runs are provided to see how the run of each code in C and x86-64 assembly is running.
@@ -47,7 +49,7 @@ Same conclusion can be met with 100x100, only for this instance its a bit more p
 Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.34% faster than the C function. Making the percantage of improvements that ``*imgCvtGrayFloatToInt()*`` cause to be averaged around 93.33% better than the C function implementation.
 
 
-Inputs are randomized and displayed only for 10x10
+One input from 10x10 dimension shown and its output:
 ![alt](./pics/1.png)
 ![alt](./pics/20241202000530.png)
 ![alt](./pics/20241202000509.png)
@@ -58,20 +60,20 @@ Inputs are randomized and displayed only for 10x10
 # Correctness test
 
 For the correctness test we will be using python's round function as their integer rounding follows round to nearest, ties to even conditions. It is run under PyCharm Community 2024 as the IDE, or simply use the command python main.py. The code implementation of python follow produce as so:
-![[Pasted image 20241202005119.png]]
+![alt](./pics/20241202005119.png)
 Our main focus for checking is whether pythons calculated result would be equal the result of either from C or assembly. Using the numpy function for equal, this line for `print(np.array_equal(new, given))` we will easily get a brief indication on the lower dimension of 10x10 that the result is true or false at the last line of the output.
 
 # Results of Correctness:
 
 ## Given Calculated x86-64 asm
-![[Pasted image 20241202001234.png]]
+![alt](./pics/20241202001234.png)
 Results of Correctness:
 
 ## Given Calculated C Program
-![[Pasted image 20241202001318.png]]
+![alt](./pics/20241202001318.png)
 
 Overall, both functions produced accurate information that is expected to follow under the assumption: Map Grayscale float to 255.0 then follow round to nearest integer then ties to even. Following the proportion below
-![[Pasted image 20241202003630.png]]
+![alt](./pics/20241202003630.png)
 That simplifies to the equation:  `255f = i
 
 
