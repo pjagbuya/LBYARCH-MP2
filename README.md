@@ -5,10 +5,12 @@ Paul Josef P. Agbuya,
 Ken Ivan T. Cheng
 
 Running Visual Studio
-
 1.) Open Local Folder look for MP2_AGBUYA_KEN
+
 2.) select .sln file
+
 Running the program:
+
 1.) cd .\MP2_AGBUYA_KEN\x64\Debug
 
 2.) MP2_AGBUYA_KEN
