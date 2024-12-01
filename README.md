@@ -48,9 +48,8 @@ Lastly, the 1000x1000 which means the resulting averages make the x86-64 functio
 
 
 Inputs are randomized and displayed only for 10x10
-![alt](./pics/Pasted image 20241202000257.png)
-
-![[./pics/Pasted image 20241202000530.png]]
+![alt](./pics/1.png)
+![alt](./pics/"Pasted image 20241202000530".png)
 ![[Pasted image 20241202000509.png]]
 
 
