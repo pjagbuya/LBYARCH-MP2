@@ -4,9 +4,10 @@ Running the program:
 1.) input1.txt
 2.) Y
 
-	For the following tests, the following becnhmark results are produced with the corresponding execution times. Each run has a different randomized input within that dimension over. It will repeat further 30 times for the average execution time. 
+For the following tests, the following becnhmark results are produced with the corresponding execution times. Each run has a different randomized input within that dimension over. It will repeat further 30 times for the average execution time. 
 Enter matrix dimensions: 10x10, 100x100, and 1000x1000. Each program has been run 30 times with the same corresponding randomized inputs. Three sample runs are provided to see how the run of each code in C and x86-64 assembly is running.
 Running tests for matrix size 10 x 10:
+
 				ASM				    C Lang
         Run 1: Time taken for asm: 0.004700ms      |      Time taken in c: 0.445800ms
         Run 2: Time taken for asm: 0.004700ms      |      Time taken in c: 0.033500ms
