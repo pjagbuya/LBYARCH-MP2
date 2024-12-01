@@ -1,8 +1,17 @@
-﻿  main.c
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(37,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(39,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,17): warning C4101: 'end': unreferenced local variable
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(66,10): warning C4101: 'start': unreferenced local variable
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(67,9): warning C4101: 'time_taken': unreferenced local variable
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(52,6): warning C4101: 'j': unreferenced local variable
-  MP2_AGBUYA_KEN.vcxproj -> C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\x64\Debug\MP2_AGBUYA_KEN.exe
+﻿  Performing Custom Build Tools
+  main.c
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(78,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(80,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(112,12): warning C4473: 'scanf_s' : not enough arguments passed for format string
+      C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(112,12):
+      placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+      C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(112,12):
+      the missing variadic argument 2 is required by format string '%c'
+      C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(112,12):
+      this argument is used as a buffer size
+  
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(146,73): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(unsigned __int64,unsigned __int64,float **,unsigned char **)'
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(95,6): warning C4101: 'j': unreferenced local variable
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(93,8): warning C4101: 'fp': unreferenced local variable
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(96,7): warning C4101: 'buffer': unreferenced local variable
+  MP2_AGBUYA_KEN.vcxproj -> C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\x64\Debug\MP2_AGBUYA_KEN.exe
