@@ -6,6 +6,7 @@
 #include <string.h>
 #include <windows.h>
 #include <time.h>
+#include <math.h>
 extern void imgCvtGrayFloatToInt();
 
 void imgCvtGrayFloatToInt_c(unsigned long long int height, unsigned long long int width, float** x, unsigned char** cvtX) {
@@ -101,24 +102,21 @@ void randInputs(float** arr, unsigned long long int w, unsigned long long int h)
 }
 
 float** readMatrixFromFile(const char* filename, unsigned long long int* height, unsigned long long int* width) {
-	FILE* file = NULL; // Initialize file pointer to NULL
+	FILE* file = NULL; 
 	float** matrix = NULL;
 	int i, j;
 
-	// Open the file
 	if (fopen_s(&file, filename, "r") != 0) {
 		perror("Error opening file");
 		return NULL;
 	}
 
-	// Read matrix dimensions
 	if (fscanf_s(file, "%llu %llu", height, width) != 2) {
 		fprintf(stderr, "Error: Unable to read matrix dimensions\n");
 		fclose(file);
 		return NULL;
 	}
 
-	// Allocate memory for the matrix
 	matrix = (float**)malloc((*height) * sizeof(float*));
 	if (matrix == NULL) {
 		fprintf(stderr, "Error: Memory allocation failed\n");
@@ -131,7 +129,6 @@ float** readMatrixFromFile(const char* filename, unsigned long long int* height,
 		if (matrix[i] == NULL) {
 			fprintf(stderr, "Error: Memory allocation failed\n");
 
-			// Free previously allocated rows
 			for (int k = 0; k < i; k++) {
 				free(matrix[k]);
 			}
@@ -142,13 +139,11 @@ float** readMatrixFromFile(const char* filename, unsigned long long int* height,
 		}
 	}
 
-	// Read matrix values
 	for (i = 0; i < *height; i++) {
 		for (j = 0; j < *width; j++) {
 			if (fscanf_s(file, "%f", &matrix[i][j]) != 1) {
 				fprintf(stderr, "Error: Unable to read matrix value at [%d][%d]\n", i, j);
 
-				// Free allocated memory
 				for (int k = 0; k < *height; k++) {
 					free(matrix[k]);
 				}
@@ -160,7 +155,6 @@ float** readMatrixFromFile(const char* filename, unsigned long long int* height,
 		}
 	}
 
-	// Close the file
 	fclose(file);
 	return matrix;
 }
@@ -180,33 +174,70 @@ int main() {
 
 	srand((unsigned int)time(NULL));
 
-	printf("Enter input filename: ");
-	scanf_s("%s", buffer, sizeof(buffer));  // Read filename input from the user
+	FILE* file = NULL;
 
-	// Call the function to read the matrix from the file
+	do {
+		printf("Enter input filename: ");
+		scanf_s("%255s", buffer, (unsigned int)sizeof(buffer)); // Read filename
+
+		if (fopen_s(&file, buffer, "r") != 0) {
+			printf("Error: File '%s' not found. Please try again.\n", buffer);
+		}
+		else {
+			fclose(file); // Close the file as it's just being tested
+			break;        // Exit the loop if the file is valid
+		}
+	} while (1); // Infinite loop until a valid file is found
+
 	x = readMatrixFromFile(buffer, &height, &width);
+
+	cvtX = (unsigned char**)malloc(height * sizeof(unsigned char*));
+
+	for (int i = 0; i < width; i++) {
+		cvtX[i] = (unsigned char*)malloc(width * sizeof(unsigned char));
+	}
 
 	printf("Original image:\n");
 	display(x, width, height);
 
+	time_taken = benchmark(height, width, x, cvtX, imgCvtGrayFloatToInt);
+	time_taken_c = benchmark(height, width, x, cvtX, imgCvtGrayFloatToInt_c);
+
+	printf("\nGrayscale image:\n");
+	displayInt(cvtX, width, height);
+
+	printf("\n");
+	printf("===========================\n\n");
+	printf("Time asm = %fms\n", time_taken);
+	printf("Time c = %fms\n\n", time_taken_c);
 	
 	char ans;
+	int valid_input;
+
 	do {
-		printf("Do you want to generate tests? (Y/N)\n");
-		scanf_s("%c", &ans);
+		printf("Do you want to generate tests? (Y/N): ");
+		valid_input = scanf_s(" %c", &ans, 1);
 
-		switch (ans) {
-		case 'Y':
-		case 'y':
-			break;
-		case 'N':
-		case 'n':
-			return 0;
-		default:
-			printf("Invalid input.\n\n");
+		while (getchar() != '\n');
+
+		if (valid_input == 1) {
+			ans = tolower(ans); 
+			if (ans == 'y') {
+				printf("Generating tests...\n");
+				break;
+			}
+			else if (ans == 'n') {
+				printf("Exiting...\n");
+				return 0;
+			}
+			else {
+				printf("Invalid input. Please enter 'Y' or 'N'.\n\n");
+			}
 		}
-
-	} while (ans != 'Y' && ans != 'y');
+		else {
+			printf("Invalid input. Please enter 'Y' or 'N'.\n\n");
+		}
+	} while (1);
 
 	for (int iteration = 0; iteration < testSize; iteration++) {
 		double sum_time = 0, sum_time_c = 0;
@@ -233,12 +264,12 @@ int main() {
 			time_taken_c = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt_c);
 			sum_time_c += time_taken_c;
 
-			/*if (ctr == 0) {
+			if (ctr == 0) {
 				printf("Original image values: \n");
 				display(x, width, height);
 				printf("\n\nConverted Grayscale: \n");
 				displayInt(cvtX, width, height);
-			}*/
+			}
 
 			// Display the time taken for the first 3 iterations
 			if (ctr < 3) {
