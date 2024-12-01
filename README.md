@@ -18,7 +18,9 @@ Running the program:
 
 3.) input1.txt
 
-4.) Y
+4.) 'Y'
+OR
+4.) 'N' (For single run customized dimensions)
 
 
 One input from 10x10 dimension shown and its output (inputs located at input1.txt):
