@@ -102,5 +102,5 @@ That simplifies to the equation:  `255f = i
 
 # Short video
 
-[![alt](https://go.screenpal.com/player/appearance/cZlVqtnncYF)](https://go.screenpal.com/player/appearance/cZlVqtnncYF)
+[![alt](https://go.screenpal.com/player/appearance/cZlVqtnncYF)](https://go.screenpal.com/player/appearance/cZlVqtnncYF](https://go.screenpal.com/player/cZlVqtnncYF?width=100%&height=100%&ff=1&title=0)
 
