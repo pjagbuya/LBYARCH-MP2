@@ -48,7 +48,7 @@ Lastly, the 1000x1000 which means the resulting averages make the x86-64 functio
 
 
 Inputs are randomized and displayed only for 10x10
-![[Pasted image 20241202000257.png]]
+![alt](20241202000257.png)
 
 ![[Pasted image 20241202000530.png]]
 ![[Pasted image 20241202000509.png]]
@@ -58,39 +58,7 @@ Inputs are randomized and displayed only for 10x10
 # Correctness test
 
 For the correctness test we will be using python's round function as their integer rounding follows round to nearest, ties to even conditions. It is run under PyCharm Community 2024 as the IDE, or simply use the command python main.py. The code implementation of python follow produce as so:
-
-`import numpy as np  
-  
-`def read_data_from_file(filename, alt=False):  
-  ``  with open(filename, 'r') as file:  
-    ``    lines = file.readlines()  
-      ``  data = []  
-        `for line in lines:  
-          ``  if alt:  
-            ``    row = [int(num) for num in line.strip().split(", ")]  
-            `else:  
-              ``  row = [float(num) for num in line.strip().split()]  
-            `data.append(row)  
-    `return np.array(data)  
-  
-`def main():  
-  ``  arr =read_data_from_file("input_gray.txt")  
-    `new = (arr*255).round(0).astype(np.uint8)  
-	`print("Python Calculated")`
-    `print(new)  
-    `given =read_data_from_file("output_test.txt", True) 
-	`print("Given Calculated") 
-    `print(given)  
-    `print(np.array_equal(new, given))  
-  
- ``   for i in range(0, 10):  
-   ``     for j in range(0, 10):  
-    ``        if given[i][j] != new[i][j]:  
-      ``          print(f"Index row {i+1} at col {j+1}: {given[i][j]}!={new[i][j]}")  
-  
-  
-`if __name__ == "__main__":  
-  ``  main()
+![[Pasted image 20241202005119.png]]
 Our main focus for checking is whether pythons calculated result would be equal the result of either from C or assembly. Using the numpy function for equal, this line for `print(np.array_equal(new, given))` we will easily get a brief indication on the lower dimension of 10x10 that the result is true or false at the last line of the output.
 
 # Results of Correctness:
