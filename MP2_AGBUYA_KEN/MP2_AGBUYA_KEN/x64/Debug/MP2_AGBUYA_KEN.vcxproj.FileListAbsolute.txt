@@ -1,2 +1,0 @@
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\x64\Debug\MP2_AGBUYA_KEN.exe.lastcodeanalysissucceeded
-C:\Users\Paul Josef\Documents\GitHub\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\x64\Debug\NativeCodeAnalysis.read.1.tlog

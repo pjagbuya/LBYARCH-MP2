@@ -210,7 +210,7 @@ int main() {
 	int valid_input;
 
 	do {
-		printf("Do you want to generate tests? (Y/N): ");
+		printf("Do you want to generate (10x10, 100x100, 1000x1000) tests? (Y/ N / 'X' - Exit Program): ");
 		valid_input = scanf_s(" %c", &ans, 1);
 
 		while (getchar() != '\n');
@@ -222,6 +222,27 @@ int main() {
 				break;
 			}
 			else if (ans == 'n') {
+				printf("\nInsert width x height (n n): ");
+				scanf_s("%lld %lld", &height, &width);
+				while (getchar() != '\n');
+				randInputs(x, width, height);
+				printf("\n\nOriginal image:\n");
+				display(x, width, height);
+
+				time_taken = benchmark(height, width, x, cvtX, imgCvtGrayFloatToInt);
+				printf("\n\nConverted Grayscale in x86-64 asm:\n");
+				displayInt(cvtX, width, height);
+				time_taken_c = benchmark(height, width, x, cvtX, imgCvtGrayFloatToInt_c);
+
+				printf("\nConverted Grayscale in C:\n");
+				displayInt(cvtX, width, height);
+
+				printf("\n");
+				printf("===========================\n\n");
+				printf("Time asm = %fms\n", time_taken);
+				printf("Time c = %fms\n\n", time_taken_c);
+			}
+			else if (ans == 'x') {
 				printf("Exiting...\n");
 				return 0;
 			}
