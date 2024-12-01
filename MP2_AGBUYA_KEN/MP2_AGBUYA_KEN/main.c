@@ -12,22 +12,20 @@ extern void imgCvtGrayFloatToInt();
 void imgCvtGrayFloatToInt_c(unsigned long long int height, unsigned long long int width, float** x, unsigned char** cvtX) {
 	for (unsigned long long int i = 0; i < height; i++) {
 		for (unsigned long long int j = 0; j < width; j++) {
-			// Scale value to range [0, 255]
 			float scaled_value = x[i][j] * 255.0f;
 
 			// Implement ties to even rounding
-			int lower = (int)floor(scaled_value); // Lower integer
-			int upper = lower + 1;               // Upper integer
+			int lower = (int)floor(scaled_value); 
+			int upper = lower + 1;               
 			float diff = scaled_value - lower;
 
 			if (diff > 0.5f) {
-				cvtX[i][j] = (unsigned char)upper; // Round up
+				cvtX[i][j] = (unsigned char)upper; 
 			}
 			else if (diff < 0.5f) {
-				cvtX[i][j] = (unsigned char)lower; // Round down
+				cvtX[i][j] = (unsigned char)lower; 
 			}
 			else {
-				// Tied case: Choose the even value
 				cvtX[i][j] = (unsigned char)((lower % 2 == 0) ? lower : upper);
 			}
 		}
@@ -173,16 +171,16 @@ int main() {
 
 	do {
 		printf("Enter input filename: ");
-		scanf_s("%255s", buffer, (unsigned int)sizeof(buffer)); // Read filename
+		scanf_s("%255s", buffer, (unsigned int)sizeof(buffer)); 
 
 		if (fopen_s(&file, buffer, "r") != 0) {
 			printf("Error: File '%s' not found. Please try again.\n", buffer);
 		}
 		else {
-			fclose(file); // Close the file as it's just being tested
-			break;        // Exit the loop if the file is valid
+			fclose(file); 
+			break;        
 		}
-	} while (1); // Infinite loop until a valid file is found
+	} while (1); 
 
 	x = readMatrixFromFile(buffer, &height, &width);
 
