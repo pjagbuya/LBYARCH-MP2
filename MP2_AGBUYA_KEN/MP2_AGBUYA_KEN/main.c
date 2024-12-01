@@ -83,93 +83,158 @@ void randInputs(float** arr, unsigned long long int w, unsigned long long int h)
 	}
 }
 
+float** readMatrixFromFile(const char* filename, unsigned long long int* height, unsigned long long int* width) {
+	FILE* file = NULL; // Initialize file pointer to NULL
+	float** matrix = NULL;
+	int i, j;
+
+	// Open the file
+	if (fopen_s(&file, filename, "r") != 0) {
+		perror("Error opening file");
+		return NULL;
+	}
+
+	// Read matrix dimensions
+	if (fscanf_s(file, "%llu %llu", height, width) != 2) {
+		fprintf(stderr, "Error: Unable to read matrix dimensions\n");
+		fclose(file);
+		return NULL;
+	}
+
+	// Allocate memory for the matrix
+	matrix = (float**)malloc((*height) * sizeof(float*));
+	if (matrix == NULL) {
+		fprintf(stderr, "Error: Memory allocation failed\n");
+		fclose(file);
+		return NULL;
+	}
+
+	for (i = 0; i < *height; i++) {
+		matrix[i] = (float*)malloc((*width) * sizeof(float));
+		if (matrix[i] == NULL) {
+			fprintf(stderr, "Error: Memory allocation failed\n");
+
+			// Free previously allocated rows
+			for (int k = 0; k < i; k++) {
+				free(matrix[k]);
+			}
+			free(matrix);
+
+			fclose(file);
+			return NULL;
+		}
+	}
+
+	// Read matrix values
+	for (i = 0; i < *height; i++) {
+		for (j = 0; j < *width; j++) {
+			if (fscanf_s(file, "%f", &matrix[i][j]) != 1) {
+				fprintf(stderr, "Error: Unable to read matrix value at [%d][%d]\n", i, j);
+
+				// Free allocated memory
+				for (int k = 0; k < *height; k++) {
+					free(matrix[k]);
+				}
+				free(matrix);
+
+				fclose(file);
+				return NULL;
+			}
+		}
+	}
+
+	// Close the file
+	fclose(file);
+	return matrix;
+}
+
 int main() {
 	int tests[] = { 10, 100, 1000 };
 	int testSize = sizeof(tests) / sizeof(tests[0]);
 	int run_times = 30;
 
-	unsigned long long int height;
-	unsigned long long int width;
-	FILE* fp;
 	int i;
 	int j;
 	char buffer[100];
 	double time_taken, time_taken_c;
+	unsigned long long int height = 0, width = 0;
+	float** x = NULL;
+	unsigned char** cvtX = NULL;
 
 	srand((unsigned int)time(NULL));
 
-	printf("Enter matrix dimensions: ");
-	scanf_s("%lld %lld", &height, &width);
+	printf("Enter input filename: ");
+	scanf_s("%s", buffer, sizeof(buffer));  // Read filename input from the user
 
-	if (height <= 0 || width <= 0) {
-		printf("Invalid inputs for matrix dimensions. Inputs must be positive integers.\n\n");
-	}
-	else {
+	// Call the function to read the matrix from the file
+	x = readMatrixFromFile(buffer, &height, &width);
 
-		char ans;
-		do {
-			printf("Do you want to generate tests? (Y/N)\n");
-			scanf_s("%c", &ans);
+	printf("Original image:\n");
+	display(x, width, height);
 
-			switch (ans) {
-			case 'Y':
-			case 'y':
-				break;
-			case 'N':
-			case 'n':
-				return 0;
-			default:
-				printf("Invalid input.\n\n");
-			}
+	
+	char ans;
+	do {
+		printf("Do you want to generate tests? (Y/N)\n");
+		scanf_s("%c", &ans);
 
-		} while (ans != 'Y' && ans != 'y');
-
-		for (int iteration = 0; iteration < testSize; iteration++) {
-			double sum_time = 0, sum_time_c = 0;
-			unsigned long long int ROW_BYTES = tests[iteration] * sizeof(float*);
-			unsigned long long int COL_BYTES = tests[iteration] * sizeof(float);
-
-			unsigned long long int INT_ROW_BYTES = tests[iteration] * sizeof(unsigned char*);
-			unsigned long long int INT_COL_BYTES = tests[iteration] * sizeof(unsigned char);
-
-			float** x = (float**)malloc(ROW_BYTES);
-			unsigned char** cvtX = (unsigned  char**)malloc(INT_ROW_BYTES);
-
-			for (i = 0; i < tests[iteration]; i++) {
-				x[i] = (float*)malloc(COL_BYTES);
-				cvtX[i] = (unsigned char*)malloc(INT_COL_BYTES);
-			}
-
-			printf("Running tests for matrix size %d x %d:\n\n", tests[iteration], tests[iteration]);
-			for (int ctr = 0; ctr < run_times; ctr++) {
-				randInputs(x, tests[iteration], tests[iteration]);
-				time_taken = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt);
-				sum_time += time_taken;
-
-				time_taken_c = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt_c);
-				sum_time_c += time_taken_c;
-
-				/*if (ctr == 0) {
-					printf("Original image values: \n");
-					display(x, width, height);
-					printf("\n\nConverted Grayscale: \n");
-					displayInt(cvtX, width, height);
-				}*/
-
-				// Display the time taken for the first 3 iterations
-				if (ctr < 3) {
-					printf("\tRun %d: Time taken for asm: %fms      |      Time taken in c: %fms\n", ctr + 1, time_taken, time_taken_c);
-				}
-			}
-			printf("\n");
-			printf("Time average asm = %fms\n", (sum_time) / run_times);
-			printf("Time average c = %fms\n", (sum_time_c) / run_times);
-			printf("===========================\n\n");
-
-			free(x);
-			free(cvtX);
+		switch (ans) {
+		case 'Y':
+		case 'y':
+			break;
+		case 'N':
+		case 'n':
+			return 0;
+		default:
+			printf("Invalid input.\n\n");
 		}
-	}
 
+	} while (ans != 'Y' && ans != 'y');
+
+	for (int iteration = 0; iteration < testSize; iteration++) {
+		double sum_time = 0, sum_time_c = 0;
+		unsigned long long int ROW_BYTES = tests[iteration] * sizeof(float*);
+		unsigned long long int COL_BYTES = tests[iteration] * sizeof(float);
+
+		unsigned long long int INT_ROW_BYTES = tests[iteration] * sizeof(unsigned char*);
+		unsigned long long int INT_COL_BYTES = tests[iteration] * sizeof(unsigned char);
+
+		float** x = (float**)malloc(ROW_BYTES);
+		unsigned char** cvtX = (unsigned  char**)malloc(INT_ROW_BYTES);
+
+		for (i = 0; i < tests[iteration]; i++) {
+			x[i] = (float*)malloc(COL_BYTES);
+			cvtX[i] = (unsigned char*)malloc(INT_COL_BYTES);
+		}
+
+		printf("Running tests for matrix size %d x %d:\n\n", tests[iteration], tests[iteration]);
+		for (int ctr = 0; ctr < run_times; ctr++) {
+			randInputs(x, tests[iteration], tests[iteration]);
+			time_taken = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt);
+			sum_time += time_taken;
+
+			time_taken_c = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt_c);
+			sum_time_c += time_taken_c;
+
+			/*if (ctr == 0) {
+				printf("Original image values: \n");
+				display(x, width, height);
+				printf("\n\nConverted Grayscale: \n");
+				displayInt(cvtX, width, height);
+			}*/
+
+			// Display the time taken for the first 3 iterations
+			if (ctr < 3) {
+				printf("\tRun %d: Time taken for asm: %fms      |      Time taken in c: %fms\n", ctr + 1, time_taken, time_taken_c);
+			}
+		}
+		printf("\n");
+		printf("Time average asm = %fms\n", (sum_time) / run_times);
+		printf("Time average c = %fms\n", (sum_time_c) / run_times);
+		printf("===========================\n\n");
+
+		free(x);
+		free(cvtX);
+	}
 	return 0;
 }
