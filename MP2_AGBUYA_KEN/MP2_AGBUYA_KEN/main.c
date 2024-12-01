@@ -11,7 +11,24 @@ extern void imgCvtGrayFloatToInt();
 void imgCvtGrayFloatToInt_c(unsigned long long int height, unsigned long long int width, float** x, unsigned char** cvtX) {
 	for (unsigned long long int i = 0; i < height; i++) {
 		for (unsigned long long int j = 0; j < width; j++) {
-			cvtX[i][j] = (unsigned char)(x[i][j] * 255.0f);
+			// Scale value to range [0, 255]
+			float scaled_value = x[i][j] * 255.0f;
+
+			// Implement ties to even rounding
+			int lower = (int)floor(scaled_value); // Lower integer
+			int upper = lower + 1;               // Upper integer
+			float diff = scaled_value - lower;
+
+			if (diff > 0.5f) {
+				cvtX[i][j] = (unsigned char)upper; // Round up
+			}
+			else if (diff < 0.5f) {
+				cvtX[i][j] = (unsigned char)lower; // Round down
+			}
+			else {
+				// Tied case: Choose the even value
+				cvtX[i][j] = (unsigned char)((lower % 2 == 0) ? lower : upper);
+			}
 		}
 	}
 }
