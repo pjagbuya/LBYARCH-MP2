@@ -248,9 +248,9 @@ int main() {
 			cvtX[i] = (unsigned char*)malloc(INT_COL_BYTES);
 		}
 
+		randInputs(x, tests[iteration], tests[iteration]);
 		printf("Running tests for matrix size %d x %d:\n\n", tests[iteration], tests[iteration]);
 		for (int ctr = 0; ctr < run_times; ctr++) {
-			randInputs(x, tests[iteration], tests[iteration]);
 			time_taken = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt);
 			sum_time += time_taken;
 

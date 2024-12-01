@@ -1,7 +1,7 @@
 ﻿  main.c
-C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(91,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(93,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(198,49): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(unsigned __int64,unsigned __int64,float **,unsigned char **)'
-C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(256,72): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(unsigned __int64,unsigned __int64,float **,unsigned char **)'
-C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(163,6): warning C4101: 'j': unreferenced local variable
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(89,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(91,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(196,49): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(unsigned __int64,unsigned __int64,float **,unsigned char **)'
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(254,72): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(unsigned __int64,unsigned __int64,float **,unsigned char **)'
+C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\MP2_AGBUYA_KEN\main.c(161,6): warning C4101: 'j': unreferenced local variable
   MP2_AGBUYA_KEN.vcxproj -> C:\Users\Ken Cheng\LBYARCH-MP2\MP2_AGBUYA_KEN\x64\Debug\MP2_AGBUYA_KEN.exe
