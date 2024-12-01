@@ -102,5 +102,5 @@ That simplifies to the equation:  `255f = i
 
 # Short video
 
-![alt](<div class="sp-embed-player" data-id="cZlVqtnncYF"><script src="https://go.screenpal.com/player/appearance/cZlVqtnncYF"></script><iframe width="100%" height="100%" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cZlVqtnncYF?width=100%&height=100%&ff=1&title=0" allowfullscreen="true"></iframe></div>)
+[![alt](https://go.screenpal.com/player/appearance/cZlVqtnncYF)](https://go.screenpal.com/player/appearance/cZlVqtnncYF)
 
