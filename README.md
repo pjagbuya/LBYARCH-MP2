@@ -50,11 +50,11 @@ A bit of background beneath the processes in ``*imgCvtGrayFloatToInt()*`` and ``
 
 
 
-In the 10x10 instance, it is apparent that the assembly implementation of the function ``*imgCvtGrayFloatToInt()*`` it resulted to about 88.39% decrease in average execution time in comparison to C programming implementation. Making its speed to be 8.61x faster. This dimensions of 10x10 can be seen as where we see asm has the least impact in relation to the other results. This can be due to the fact the C program needs a bit more rounding logic to align with the round to nearest ties to even that the result of cvtss2si from SIMD functions that happen in the assembly language.
+In the 10x10 instance, it is apparent that the assembly implementation of the function ``*imgCvtGrayFloatToInt()*`` it resulted to about 88.86% decrease in average execution time in comparison to C programming implementation. Making its speed to be 8.98x faster. This dimensions of 10x10 can be seen as where we see asm has the least impact in relation to the other results. This can be due to the fact the C program needs a bit more rounding logic to align with the round to nearest ties to even that the result of cvtss2si from SIMD functions that happen in the assembly language.
 
-Same conclusion can be met with 100x100, only for this instance its a bit more prevalent. Around 94.45% decrease on average execution time than C program implementation. Around 18.02 times faster than the C program implementation and the most significant out of the 3 cases.
+Same conclusion can be met with 100x100, only for this instance its a bit more prevalent. Around 94.68% decrease on average execution time than C program implementation. Around 18.80 times faster than the C program implementation and the most significant out of the 3 cases.
 
-Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.74% decrease on average execution time than the C function. Also about 15.98x faster, yielding itself to be the 2nd best impact out of the three cases. So for dimensions around 100x100 matrix we would notice the best difference from C to asm.
+Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.76% decrease on average execution time than the C function. Also about 16.03x faster, yielding itself to be the 2nd best impact out of the three cases. So for dimensions around 100x100 matrix we would notice the best difference from C to asm.
 
 
 One input from 10x10 dimension shown and its output:
