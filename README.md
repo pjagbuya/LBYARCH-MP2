@@ -1,6 +1,7 @@
 # LBYARCH 2: MP2 GrayScale Single Precision Image to Unsigned 8-Bit Integer
 
 Running the program:
+
 1.) input1.txt
 
 2.) Y
@@ -8,50 +9,57 @@ Running the program:
 
 For the following tests, the following becnhmark results are produced with the corresponding execution times. Each run has a different randomized input within that dimension over. It will repeat further 30 times for the average execution time. 
 Enter matrix dimensions: 10x10, 100x100, and 1000x1000. Each program has been run 30 times with the same corresponding randomized inputs. Three sample runs are provided to see how the run of each code in C and x86-64 assembly is running.
+
 Running tests for matrix size 10 x 10:
 
-				ASM				    C Lang
-        Run 1: Time taken for asm: 0.004700ms      |      Time taken in c: 0.445800ms
-        Run 2: Time taken for asm: 0.004700ms      |      Time taken in c: 0.033500ms
-        Run 3: Time taken for asm: 0.003700ms      |      Time taken in c: 0.032400ms
+        Run 1: Time taken for asm: 0.200000ms      |      Time taken in c: 2.800000ms
+        Run 2: Time taken for asm: 0.300000ms      |      Time taken in c: 2.600000ms
+        Run 3: Time taken for asm: 0.200000ms      |      Time taken in c: 1.800000ms
 
-Time average asm = 0.003630ms
-Time average c = 0.046357ms
+Time average asm = 0.136667ms
+Time average c = 1.176667ms
 ===========================
 
 Running tests for matrix size 100 x 100:
 
-        Run 1: Time taken for asm: 0.352000ms      |      Time taken in c: 6.471900ms
-        Run 2: Time taken for asm: 0.350700ms      |      Time taken in c: 6.529800ms
-        Run 3: Time taken for asm: 0.354700ms      |      Time taken in c: 6.538400ms
+        Run 1: Time taken for asm: 14.800000ms      |      Time taken in c: 235.200000ms
+        Run 2: Time taken for asm: 17.400000ms      |      Time taken in c: 237.900000ms
+        Run 3: Time taken for asm: 16.600000ms      |      Time taken in c: 230.100000ms
 
-Time average asm = 0.367500ms
-Time average c = 6.653730ms
+Time average asm = 12.196667ms
+Time average c = 219.836667ms
 ===========================
 
 Running tests for matrix size 1000 x 1000:
 
-        Run 1: Time taken for asm: 42.306500ms      |      Time taken in c: 726.811500ms
-        Run 2: Time taken for asm: 44.212200ms      |      Time taken in c: 725.536700ms
-        Run 3: Time taken for asm: 41.629300ms      |      Time taken in c: 721.764600ms
+        Run 1: Time taken for asm: 1383.000000ms      |      Time taken in c: 23528.200000ms
+        Run 2: Time taken for asm: 1404.700000ms      |      Time taken in c: 23591.500000ms
+        Run 3: Time taken for asm: 2173.600000ms      |      Time taken in c: 23720.200000ms
 
-Time average asm = 48.836947ms
-Time average c = 736.098403ms
+Time average asm = 1504.033333ms
+Time average c = 24031.220000ms
 ===========================
 
-## Analysis
+## Performance Result
 A bit of background beneath the processes in ``*imgCvtGrayFloatToInt()*`` and ``*imgCvtGrayFloatToInt_c()*``. Functions belonging to x86-64 asm and C respectively. Array of 2-Dimensions was implemented in C, and it is how it was allocated. Making ``*imgCvtGrayFloatToInt()*`` need to process two pointers and then correspondingly converting it via multiplying to 255.0 then back to integer. The C programming function would need additional logic comparing the round to nearest and an additional ties to even condition.
+| Matrix (h x w) | x86-64 asm   (ave ms) | C lang (ave ms)  | Speed Scale asm  | Decrease asm over C|
+|----------------|-------------------|--------------| ------------------|------------------|
+| 10x10          | 0.137	     | 1.177	    | 8.61x		| 88.39%		|
+| 100x100        | 12.197	     | 219.837	    | 18.02x		| 94.45%	|
+| 1000x1000      | 1504.03 	     | 24031.22      | 15.98x		| 93.74%		|
 
-In the 10x10 instance, it is apparent that the assembly implementation of the function ``*imgCvtGrayFloatToInt()*`` is about about 91.17% faster than the C programming implementation. This can be due to the fact the C program needs a bit more rounding logic to align with the round to nearest ties to even that the result of cvtss2si from SIMD functions that happen in the assembly language.
 
-Same conclusion can be met with 100x100, only for this instance its a bit more prevalent. Around 94.48% faster on average than the results produce from the C program implementation.
 
-Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.34% faster than the C function. Making the percantage of improvements that ``*imgCvtGrayFloatToInt()*`` cause to be averaged around 93.33% better than the C function implementation.
+In the 10x10 instance, it is apparent that the assembly implementation of the function ``*imgCvtGrayFloatToInt()*`` it resulted to about 88.39% decrease in average execution time in comparison to C programming implementation. Making its speed to be 8.61x faster. This dimensions of 10x10 can be seen as where we see asm has the least impact in relation to the other results. This can be due to the fact the C program needs a bit more rounding logic to align with the round to nearest ties to even that the result of cvtss2si from SIMD functions that happen in the assembly language.
+
+Same conclusion can be met with 100x100, only for this instance its a bit more prevalent. Around 94.45% decrease on average execution time than C program implementation. Around 18.02 times faster than the C program implementation and the most significant out of the 3 cases.
+
+Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.74% decrease on average execution time than the C function. Also about 15.98x faster, yielding itself to be the 2nd best impact out of the three cases. So for dimensions around 100x100 matrix we would notice the best difference from C to asm.
 
 
 One input from 10x10 dimension shown and its output:
 ![alt](./pics/1.png)
-![alt](./pics/20241202000530.png)
+
 ![alt](./pics/20241202000509.png)
 
 
