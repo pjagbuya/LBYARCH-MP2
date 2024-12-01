@@ -38,13 +38,13 @@ Time average c = 736.098403ms
 ===========================
 
 ## Analysis
-	A bit of background beneath the processes in ``*imgCvtGrayFloatToInt()*`` and ``*imgCvtGrayFloatToInt_c()*``. Functions belonging to x86-64 asm and C respectively. Array of 2-Dimensions was implemented in C, and it is how it was allocated. Making ``*imgCvtGrayFloatToInt()*`` need to process two pointers and then correspondingly converting it via multiplying to 255.0 then back to integer. The C programming function would need additional logic comparing the round to nearest and an additional ties to even condition.
+A bit of background beneath the processes in ``*imgCvtGrayFloatToInt()*`` and ``*imgCvtGrayFloatToInt_c()*``. Functions belonging to x86-64 asm and C respectively. Array of 2-Dimensions was implemented in C, and it is how it was allocated. Making ``*imgCvtGrayFloatToInt()*`` need to process two pointers and then correspondingly converting it via multiplying to 255.0 then back to integer. The C programming function would need additional logic comparing the round to nearest and an additional ties to even condition.
 
-	In the 10x10 instance, it is apparent that the assembly implementation of the function ``*imgCvtGrayFloatToInt()*`` is about about 91.17% faster than the C programming implementation. This can be due to the fact the C program needs a bit more rounding logic to align with the round to nearest ties to even that the result of cvtss2si from SIMD functions that happen in the assembly language.
+In the 10x10 instance, it is apparent that the assembly implementation of the function ``*imgCvtGrayFloatToInt()*`` is about about 91.17% faster than the C programming implementation. This can be due to the fact the C program needs a bit more rounding logic to align with the round to nearest ties to even that the result of cvtss2si from SIMD functions that happen in the assembly language.
 
-	Same conclusion can be met with 100x100, only for this instance its a bit more prevalent. Around 94.48% faster on average than the results produce from the C program implementation.
+Same conclusion can be met with 100x100, only for this instance its a bit more prevalent. Around 94.48% faster on average than the results produce from the C program implementation.
 
-	Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.34% faster than the C function. Making the percantage of improvements that ``*imgCvtGrayFloatToInt()*`` cause to be averaged around 93.33% better than the C function implementation.
+Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.34% faster than the C function. Making the percantage of improvements that ``*imgCvtGrayFloatToInt()*`` cause to be averaged around 93.33% better than the C function implementation.
 
 
 Inputs are randomized and displayed only for 10x10
