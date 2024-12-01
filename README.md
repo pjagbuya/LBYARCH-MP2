@@ -1,5 +1,9 @@
 # LBYARCH 2: MP2 GrayScale Single Precision Image to Unsigned 8-Bit Integer
 
+Members:
+Paul Josef P. Agbuya
+Ken Ivan T. Cheng
+
 Running the program:
 
 1.) input1.txt
