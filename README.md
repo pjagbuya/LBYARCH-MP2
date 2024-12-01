@@ -87,7 +87,7 @@ Our main focus for checking is whether pythons calculated result would be equal 
 
 ## Given Calculated x86-64 asm
 ![alt](./pics/20241202001234.png)
-Results of Correctness:
+
 
 ## Given Calculated C Program
 ![alt](./pics/20241202001318.png)
