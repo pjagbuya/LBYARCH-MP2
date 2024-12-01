@@ -57,9 +57,11 @@ Same conclusion can be met with 100x100, only for this instance its a bit more p
 Lastly, the 1000x1000 which means the resulting averages make the x86-64 function be 93.76% decrease on average execution time than the C function. Also about 16.03x faster, yielding itself to be the 2nd best impact out of the three cases. So for dimensions around 100x100 matrix we would notice the best difference from C to asm.
 
 
-One input from 10x10 dimension shown and its output:
+One input from 10x10 dimension shown and its output (inputs located at input1.txt):
 ![alt](./pics/1.png)
 
+
+## Raw outputs in the Console
 ![alt](./pics/20241202000509.png)
 
 
