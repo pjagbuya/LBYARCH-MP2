@@ -1,4 +1,4 @@
-# LBYARCH 2: MP2 GrayScale Single Precision Image to Unsigned 8-Bit Integer
+# LBYARCH: MP2 GrayScale Single Precision Image to Unsigned 8-Bit Integer
 
 Members:
 Paul Josef P. Agbuya
