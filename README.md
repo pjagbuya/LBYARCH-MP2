@@ -74,5 +74,5 @@ That simplifies to the equation:  `255f = i
 
 # Short video
 
-![Video Link To Gdrive](https://drive.google.com/file/d/1V0x8VYjPYNt5sWjrzteuETLy7Q9tDMmF/view)
+[![Video Link To Gdrive](https://drive.google.com/file/d/1V0x8VYjPYNt5sWjrzteuETLy7Q9tDMmF/view)](https://drive.google.com/file/d/1V0x8VYjPYNt5sWjrzteuETLy7Q9tDMmF/view?usp=sharing)
 
