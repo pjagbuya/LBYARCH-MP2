@@ -4,11 +4,17 @@ Members:
 Paul Josef P. Agbuya
 Ken Ivan T. Cheng
 
+Running Visual Studio
+1.) Open Local Folder look for MP2_AGBUYA_KEN
+2.) select .sln file
 Running the program:
+1.) cd .\MP2_AGBUYA_KEN\x64\Debug
 
-1.) input1.txt
+2.) MP2_AGBUYA_KEN
 
-2.) Y
+3.) input1.txt
+
+4.) Y
 
 
 For the following tests, the following becnhmark results are produced with the corresponding execution times. Each run has a different randomized input within that dimension over. It will repeat further 30 times for the average execution time. 
