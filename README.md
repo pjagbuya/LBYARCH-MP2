@@ -2,6 +2,7 @@
 
 Running the program:
 
+
 1.) input1.txt
 
 2.) Y
