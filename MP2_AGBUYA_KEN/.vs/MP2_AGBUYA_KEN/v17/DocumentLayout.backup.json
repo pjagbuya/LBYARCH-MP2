@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{DC159A4D-CA25-4791-BA9D-735BF26B7B11}|MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN.vcxproj|C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\input1.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{DC159A4D-CA25-4791-BA9D-735BF26B7B11}|MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN.vcxproj|solutionrelative:MP2_AGBUYA_KEN\\input1.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC159A4D-CA25-4791-BA9D-735BF26B7B11}|MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN.vcxproj|C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\asmfunc.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{DC159A4D-CA25-4791-BA9D-735BF26B7B11}|MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN.vcxproj|solutionrelative:MP2_AGBUYA_KEN\\asmfunc.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,21 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "input1.txt",
-              "DocumentMoniker": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\input1.txt",
-              "RelativeDocumentMoniker": "MP2_AGBUYA_KEN\\input1.txt",
-              "ToolTip": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\input1.txt",
-              "RelativeToolTip": "MP2_AGBUYA_KEN\\input1.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-12-01T09:00:36.066Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -41,9 +32,35 @@
               "RelativeDocumentMoniker": "MP2_AGBUYA_KEN\\main.c",
               "ToolTip": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\main.c",
               "RelativeToolTip": "MP2_AGBUYA_KEN\\main.c",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAEwLAAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAwwAgBAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-12-01T07:21:03.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "asmfunc.asm",
+              "DocumentMoniker": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\asmfunc.asm",
+              "RelativeDocumentMoniker": "MP2_AGBUYA_KEN\\asmfunc.asm",
+              "ToolTip": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\asmfunc.asm",
+              "RelativeToolTip": "MP2_AGBUYA_KEN\\asmfunc.asm",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-01T16:51:00.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "input1.txt",
+              "DocumentMoniker": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\input1.txt",
+              "RelativeDocumentMoniker": "MP2_AGBUYA_KEN\\input1.txt",
+              "ToolTip": "C:\\Users\\Ken Cheng\\LBYARCH-MP2\\MP2_AGBUYA_KEN\\MP2_AGBUYA_KEN\\input1.txt",
+              "RelativeToolTip": "MP2_AGBUYA_KEN\\input1.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-12-01T17:42:19.482Z",
               "EditorCaption": ""
             }
           ]

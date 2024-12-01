@@ -36,17 +36,12 @@ void imgCvtGrayFloatToInt_c(unsigned long long int height, unsigned long long in
 
 double benchmark(unsigned long long int height, unsigned long long int width, float** x, unsigned char** cvtX,
 	void(*function)(unsigned long long int, unsigned long long int, float**, unsigned char**)) {
-	double total_time = 0;
-
 	LARGE_INTEGER frequency, start, end;
-	for (int i = 0; i < 30; i++) {
-		QueryPerformanceFrequency(&frequency);
-		QueryPerformanceCounter(&start);
-		function(height, width, x, cvtX);
-		QueryPerformanceCounter(&end);
-		total_time += (double)(end.QuadPart - start.QuadPart) * 1e3 / (double)frequency.QuadPart;
-	}
-	return total_time;
+	QueryPerformanceFrequency(&frequency);
+	QueryPerformanceCounter(&start);
+	function(height, width, x, cvtX);
+	QueryPerformanceCounter(&end);
+	return (double)(end.QuadPart - start.QuadPart) * 1e6 / (double)frequency.QuadPart;
 }
 
 void display(float** arr, unsigned long long int w, unsigned long long int h) {
@@ -264,12 +259,12 @@ int main() {
 			time_taken_c = benchmark(tests[iteration], tests[iteration], x, cvtX, imgCvtGrayFloatToInt_c);
 			sum_time_c += time_taken_c;
 
-			if (ctr == 0) {
+			/*if (ctr == 0) {
 				printf("Original image values: \n");
 				display(x, width, height);
 				printf("\n\nConverted Grayscale: \n");
 				displayInt(cvtX, width, height);
-			}
+			}*/
 
 			// Display the time taken for the first 3 iterations
 			if (ctr < 3) {
